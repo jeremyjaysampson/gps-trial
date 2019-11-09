@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SerialPort from "serialport";
+// import SerialPort from "serialport";
 import SerialPortParser from "@serialport/parser-readline";
 import GPS from "gps";
 // var SerialPort = require("serialport");
