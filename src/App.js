@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Coordinates from "./Components/Coordinates";
-// import { subscribeToTimer } from "./api";
-import { subscribeToGPS } from "./api";
+import { subscribeToTimer } from "./api";
+// import { subscribeToGPS } from "./api";
 
 function App() {
   const [timestamp, setTimestamp] = useState("no timestamp yet");
