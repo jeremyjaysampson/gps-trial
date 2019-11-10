@@ -10,9 +10,9 @@ port.pipe(parser);
 var GPS = require("gps");
 var gps = new GPS();
 
-const port = 8000;
-io.listen(port);
-console.log("gpsServer listening on port ", port);
+const IOport = 8000;
+io.listen(IOport);
+console.log("gpsServer listening on port ", IOport);
 
 io.on("connection", client => {
   client.on("subscribeToGPS", interval => {
@@ -31,17 +31,4 @@ gps.on("data", function() {
 
 parser.on("data", function(data) {
   gps.update(data);
-});
-
-const port = 8000;
-io.listen(port);
-console.log("listening on port ", port);
-
-io.on("connection", client => {
-  client.on("subscribeToGPS", interval => {
-    console.log("client is subscribing to GPS with interval ", interval);
-    setInterval(() => {
-      client.emit("timer", new Date());
-    }, interval);
-  });
 });
