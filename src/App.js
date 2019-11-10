@@ -15,6 +15,7 @@ function App() {
   subscribeToGPS((err, data) => {
     setLatitude(data.lat);
     setLongitude(data.long);
+    console.log(data);
   }); //here
   console.log(latitude);
 
