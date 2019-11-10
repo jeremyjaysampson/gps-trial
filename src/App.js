@@ -8,8 +8,8 @@ import { subscribeToTimer } from "./api";
 function App() {
   const [timestamp, setTimestamp] = useState("no timestamp yet");
 
-  // subscribeToTimer((err, timestamp) => setTimestamp(timestamp));
-  subscribeToGPS((err, timestamp) => setTimestamp(timestamp));
+  subscribeToTimer((err, timestamp) => setTimestamp(timestamp));
+  // subscribeToGPS((err, timestamp) => setTimestamp(timestamp));
 
   return (
     <div className="App">
