@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Coordinates from "./Components/Coordinates";
+import { subscribeToTimer } from "./api";
 
 function App() {
+  const [timestamp, setTimestamp] = useState("no timestamp yet");
+
+  subscribeToTimer((err, timestamp) => setTimestamp(timestamp));
+
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +24,7 @@ function App() {
         >
           Learn React
         </a>
+        <p className="App-intro">This is the timer value: {timestamp}</p>
         <Coordinates />
       </header>
     </div>
@@ -26,3 +32,5 @@ function App() {
 }
 
 export default App;
+
+console.log("hello from app.js");
