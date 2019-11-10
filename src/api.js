@@ -8,7 +8,7 @@ function subscribeToTimer(cb) {
 export { subscribeToTimer };
 
 function subscribeToGPS(cb) {
-  socket.on("gps", timestamp => cb(null, timestamp));
+  socket.on("gps", coord => cb(null, coord));
   socket.emit("subscribeToGPS", 2000);
 }
 export { subscribeToGPS };
