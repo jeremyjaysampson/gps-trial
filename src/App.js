@@ -14,8 +14,6 @@ function App() {
   // subscribeToTimer((err, timestamp) => setTimestamp(timestamp));
   subscribeToGPS((err, data) => setLatitude(data.lat));
 
-  console.log(data);
-
   return (
     <div className="App">
       <header className="App-header">

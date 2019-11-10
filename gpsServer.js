@@ -32,7 +32,7 @@ io.on("connection", client => {
     console.log("lat only", gps.state.lat);
     setInterval(() => {
       // client.emit("gps", gps.state.lat);
-      client.emit("gps", gps.state.lat, gps.state.lat);
+      client.emit("gps", gps.state.lat);
     }, interval);
   });
 });
