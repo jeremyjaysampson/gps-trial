@@ -33,7 +33,8 @@ function App() {
         >
           Learn React
         </a>
-        <p className="App-intro">This is the timer value: {latitude}</p>
+        <p className="App-intro">Latitude: {latitude}</p>
+        <p className="App-intro">Longitude: {longitude}</p>
         <Coordinates />
       </header>
     </div>
