@@ -17,6 +17,7 @@ console.log("gpsServer listening on port ", IOport);
 io.on("connection", client => {
   client.on("subscribeToGPS", interval => {
     console.log("client is subscribing to GPS with interval ", interval);
+    console.log("lat only", gps.state.lat);
     setInterval(() => {
       client.emit("gps", new Date());
     }, interval);
