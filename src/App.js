@@ -9,7 +9,7 @@ function App() {
   const [timestamp, setTimestamp] = useState("no timestamp yet");
 
   // subscribeToTimer((err, timestamp) => setTimestamp(timestamp));
-  subscribeToGPS((err, timestamp) => setTimestamp(timestamp));
+  subscribeToGPS((err, coord) => setTimestamp(coord));
 
   return (
     <div className="App">
@@ -26,7 +26,7 @@ function App() {
         >
           Learn React
         </a>
-        <p className="App-intro">This is the timer value: {timestamp.lat}</p>
+        <p className="App-intro">This is the timer value: {coord}</p>
         <Coordinates />
       </header>
     </div>
