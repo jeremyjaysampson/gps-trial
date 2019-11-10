@@ -29,10 +29,10 @@ parser.on("data", function(data) {
 io.on("connection", client => {
   client.on("subscribeToGPS", interval => {
     console.log("client is subscribing to GPS with interval ", interval);
-    console.log("lat only", gps.state.lat);
+    console.log("lat only", gps.state); //here
     setInterval(() => {
       // client.emit("gps", gps.state.lat);
-      client.emit("gps", gps.state.lat);
+      client.emit("gps", gps.state); //here
     }, interval);
   });
 });
