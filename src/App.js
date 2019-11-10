@@ -7,9 +7,11 @@ import { subscribeToGPS } from "./api";
 
 function App() {
   const [timestamp, setTimestamp] = useState("no timestamp yet");
+  const [coordinates, setCoordinates] = useState("no coord yet");
 
   // subscribeToTimer((err, timestamp) => setTimestamp(timestamp));
-  subscribeToGPS((err, coord) => setTimestamp(coord));
+  // subscribeToGPS((err, coord) => setTimestamp(coord));
+  subscribeToGPS((err, coord) => setCoordinates(coord));
 
   return (
     <div className="App">
@@ -26,7 +28,7 @@ function App() {
         >
           Learn React
         </a>
-        <p className="App-intro">This is the timer value: {coord}</p>
+        <p className="App-intro">This is the timer value: {coordinates}</p>
         <Coordinates />
       </header>
     </div>
