@@ -12,7 +12,7 @@ function App() {
   const [longitude, setLongitude] = useState("no coord yet");
 
   // subscribeToTimer((err, timestamp) => setTimestamp(timestamp));
-  subscribeToGPS((err, lat) => setLatitude(lat));
+  subscribeToGPS((err, data) => setLatitude(data.lat));
 
   return (
     <div className="App">

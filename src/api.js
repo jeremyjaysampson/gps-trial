@@ -9,7 +9,7 @@ export { subscribeToTimer };
 
 function subscribeToGPS(cb) {
   // socket.on("gps", coord => cb(null, coord));
-  socket.on("gps", lat, lon => cb(null, lat, lon));
+  socket.on("gps", data => cb(null, data));
   socket.emit("subscribeToGPS", 2000);
 }
 export { subscribeToGPS };
