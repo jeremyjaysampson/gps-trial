@@ -19,8 +19,7 @@ io.on("connection", client => {
     console.log("client is subscribing to GPS with interval ", interval);
     console.log("lat only", gps.state.lat);
     setInterval(() => {
-      // client.emit("gps", new Date());
-      client.emit("gps", gps.state.lat);
+      client.emit("gps", gps.state);
     }, interval);
   });
 });
