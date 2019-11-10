@@ -26,7 +26,7 @@ function App() {
         >
           Learn React
         </a>
-        <p className="App-intro">This is the timer value: {timestamp}</p>
+        <p className="App-intro">This is the timer value: {timestamp.lat}</p>
         <Coordinates />
       </header>
     </div>

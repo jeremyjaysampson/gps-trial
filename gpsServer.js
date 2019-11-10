@@ -17,7 +17,7 @@ console.log("gpsServer listening on port ", IOport);
 
 gps.on("data", function() {
   if (gps.state.lat !== null) {
-    console.log("lat: " + gps.state.lat + " lon: " + gps.state.lon);
+    // console.log("lat: " + gps.state.lat + " lon: " + gps.state.lon);
     var coord = { lat: gps.state.lat, lon: gps.state.lon };
     console.log(coord.lat, " ", coord.lon);
   }
