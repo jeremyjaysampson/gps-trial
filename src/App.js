@@ -23,18 +23,24 @@ function App() {
   console.log(latitude);
 
   const stations = [
-    { name: "A", longitude: 146.55, latitude: -37.22 },
-    { name: "B", longitude: 145.17, latitude: -37.86 },
-    { name: "C", longitude: 144.32, latitude: -37.99 }
+    { name: "A", longitude: 145.1999, latitude: -37.8888 },
+    { name: "B", longitude: 145.1777, latitude: -37.8666 },
+    { name: "C", longitude: 145.1555, latitude: -37.8444 }
   ];
   const listStations = stations.map(station => (
     <li key={station.name}>
-      {station.name} {station.longitude} {station.latitude}{" "}
-      {geolib.getDistance(
-        { latitude: station.latitude, longitude: station.longitude },
-        { latitude: latitude, longitude: longitude }
-      )}
-      ;
+      {station.name} {station.longitude} {station.latitude}
+      {"    "}
+      {geolib
+        .convertDistance(
+          geolib.getDistance(
+            { latitude: station.latitude, longitude: station.longitude },
+            { latitude: latitude, longitude: longitude }
+          ),
+          "mi"
+        )
+        .toFixed(4)}{" "}
+      miles away
     </li>
   ));
 
@@ -43,9 +49,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <p>Station coordinates.</p>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -54,12 +58,10 @@ function App() {
         >
           {listStations}{" "}
         </a>
-        <p className="App-intro">
-          Latitude: {geolib.decimalToSexagesimal(latitude)}
-        </p>
-        <p className="App-intro">
-          Longitude: {geolib.decimalToSexagesimal(longitude)}
-        </p>
+        <a>-</a>
+
+        <a className="App-intro">Latitude: {Number(latitude).toFixed(6)}</a>
+        <a className="App-intro">Longitude: {Number(longitude).toFixed(6)}</a>
         <Coordinates />
         <a>nearest: {nearest} </a>
       </header>
