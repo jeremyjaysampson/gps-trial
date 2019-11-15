@@ -29,7 +29,12 @@ function App() {
   ];
   const listStations = stations.map(station => (
     <li key={station.name}>
-      {station.name} {station.longitude} {station.latitude}
+      {station.name} {station.longitude} {station.latitude}{" "}
+      {geolib.getDistance(
+        { latitude: station.latitude, longitude: station.longitude },
+        { latitude: latitude, longitude: longitude }
+      )}
+      ;
     </li>
   ));
 
