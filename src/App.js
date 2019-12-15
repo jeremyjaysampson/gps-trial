@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Coordinates from "./Components/Coordinates";
+// import Coordinates from "./Components/Coordinates";
 // import Dashboard from "./Components/dashboard";
 // import { subscribeToTimer } from "./api";
 import { subscribeToGPS } from "./api";
@@ -10,7 +10,7 @@ import * as geolib from "geolib";
 
 function App() {
   // const [timestamp, setTimestamp] = useState("no timestamp yet");
-  const [coordinates, setCoordinates] = useState("no coord yet");
+  // const [coordinates, setCoordinates] = useState("no coord yet");
   const [latitude, setLatitude] = useState("no coord yet");
   const [longitude, setLongitude] = useState("no coord yet");
   // const [nearest, setNearest] = useState("na");
