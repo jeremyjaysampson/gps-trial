@@ -62,7 +62,7 @@ function App() {
         <a>-</a>
         <a className="App-intro">Latitude: {Number(latitude).toFixed(6)}</a>
         <a className="App-intro">Longitude: {Number(longitude).toFixed(6)}</a>
-        <Coordinates />
+        // <Coordinates />
         <a>nearest: {nearest} </a>
       </header>
     </div>
