@@ -32,16 +32,6 @@ function App() {
     <li key={station.name}>
       {station.name} {station.longitude} {station.latitude}
       {"    "}
-      {geolib
-        .convertDistance(
-          geolib.getDistance(
-            { latitude: station.latitude, longitude: station.longitude },
-            { latitude: latitude, longitude: longitude }
-          ),
-          "mi"
-        )
-        .toFixed(4)}{" "}
-      miles away
     </li>
   ));
 
