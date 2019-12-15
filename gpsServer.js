@@ -18,7 +18,7 @@ console.log("gpsServer listening on port ", IOport);
 gps.on("data", function() {
   if (gps.state.lat !== null) {
     var coord = gps.state.lat;
-    console.log(coord);
+    // console.log(coord);
   }
 });
 
@@ -33,7 +33,7 @@ io.on("connection", client => {
     setInterval(() => {
       // client.emit("gps", gps.state.lat);
       client.emit("gps", gps.state); //here
-      console.log("gps", gps.state);
+      console.log("gps lat", gps.state.lat);
     }, interval);
   });
 });
