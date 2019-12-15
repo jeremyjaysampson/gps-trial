@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Coordinates from "./Components/Coordinates";
+// import Dashboard from "./Components/dashboard";
 // import { subscribeToTimer } from "./api";
 import { subscribeToGPS } from "./api";
 // import { decimalToSexagesimal } from "geolib";
@@ -59,7 +60,6 @@ function App() {
           {listStations}{" "}
         </a>
         <a>-</a>
-
         <a className="App-intro">Latitude: {Number(latitude).toFixed(6)}</a>
         <a className="App-intro">Longitude: {Number(longitude).toFixed(6)}</a>
         <Coordinates />

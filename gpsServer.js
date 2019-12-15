@@ -33,6 +33,7 @@ io.on("connection", client => {
     setInterval(() => {
       // client.emit("gps", gps.state.lat);
       client.emit("gps", gps.state); //here
+      console.log("gps", gps.state);
     }, interval);
   });
 });
