@@ -1,3 +1,7 @@
+//This program works perfectly. 26Dec2019.  just type
+//node hexwrite.js followed by the text you want to
+//convert to hex and send across serial.
+
 const SerialPort = require("serialport");
 
 function ascii2hex(str) {
