@@ -46,10 +46,17 @@ listen = () => {
   );
 };
 
-const port = "COM13";
+const port = "COM13"; //on computer
+//const port = "/dev/ttyS0";  //on Raspberry Pi
 const serialport = new SerialPort(port, { baudRate: 9600 });
 
-listen();
+//listen();
+//var buffer = arg2bufferY();
+//serialport.write(buffer);
+//console.log(" Serial sent    :", process.argv[2], " ", buffer);
+
 var buffer = arg2bufferY();
-serialport.write(buffer);
-console.log(" Serial sent    :", process.argv[2], " ", buffer);
+setInterval(() => {
+  serialport.write(buffer);
+  console.log(" Serial sent    :", process.argv[2], " ", buffer);
+}, 500);
