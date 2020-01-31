@@ -1,3 +1,18 @@
+//FOR EXPRESS REST API
+const express = require("express");
+const basicAuth = require("express-basic-auth");
+const cookieParser = require("cookie-parser");
+const path = require("path");
+const app = express();
+
+//FOR EXCEL UPLOAD
+var bodyParser = require("body-parser"); //FOR EXCEL UPLOAD
+var multer = require("multer"); //FOR EXCEL UPLOAD
+var xlstojson = require("xls-to-json-lc"); //FOR EXCEL UPLOAD
+var xlsxtojson = require("xlsx-to-json-lc"); //FOR EXCEL UPLOAD
+const fs = require("fs");
+
+//FOR GPS AND
 const io = require("socket.io")();
 var i2c = require("i2c-bus");
 const i2cBus = i2c.openSync(1);
@@ -82,4 +97,3 @@ io.on("connection", client => {
     }, interval);
   });
 });
-
