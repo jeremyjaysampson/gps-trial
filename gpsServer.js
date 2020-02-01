@@ -30,6 +30,7 @@ const nowReadGPS = () =>
     let str = rxbuf.toString();
     let start = str.indexOf("$GNGGA");
     let GNGGA = str.slice(start, start + 100);
+    console.log(GNGGA);
     let data = GPS.Parse(GNGGA);
     console.log("time: ", data.time, "  lat: ", data.lat, "  Lon: ", data.lon);
     resolve(data);
