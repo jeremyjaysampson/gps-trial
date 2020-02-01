@@ -52,7 +52,7 @@ const nowTestScreen = data => {
   _oled.setCursor(1, 1);
   console.log(data.time);
   if (data) {
-    let message = data.time;
+    let message = "lat: " + data.lat + "lon: " + data.lon;
     let messageString = message.toString();
     _oled.writeString(font, 1, messageString, 1, true);
   } else {
