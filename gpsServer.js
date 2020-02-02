@@ -24,16 +24,27 @@ let GPSstate = { lat: 0, lon: 0 };
 //GET GPS DATA
 const nowReadGPS = () =>
   new Promise((resolve, reject) => {
-    const GPS_ADDR = 0x10;
-    var rxbuf = new Buffer.alloc(1024);
-    i2cBus.i2cReadSync(GPS_ADDR, 1024, rxbuf);
-    let str = rxbuf.toString();
-    let start = str.indexOf("$GNGGA");
-    let GNGGA = str.slice(start, start + 100);
-    console.log(GNGGA);
-    let data = GPS.Parse(GNGGA);
-    console.log("time: ", data.time, "  lat: ", data.lat, "  Lon: ", data.lon);
-    resolve(data);
+    try {
+      const GPS_ADDR = 0x10;
+      var rxbuf = new Buffer.alloc(1024);
+      i2cBus.i2cReadSync(GPS_ADDR, 1024, rxbuf);
+      let str = rxbuf.toString();
+      let start = str.indexOf("$GNGGA");
+      let GNGGA = str.slice(start, start + 100);
+      console.log(GNGGA);
+      let data = GPS.Parse(GNGGA);
+      console.log(
+        "time: ",
+        data.time,
+        "  lat: ",
+        data.lat,
+        "  Lon: ",
+        data.lon
+      );
+      resolve(data);
+    } catch (error) {
+      console.log(error.message);
+    }
   });
 
 //CONSOLE LOG NOTE
