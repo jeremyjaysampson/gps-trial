@@ -110,172 +110,172 @@ io.on("connection", client => {
   });
 });
 
-// REST API STARTS HERE
-const auth = basicAuth({
-  users: {
-    admin: "123",
-    user: "456"
-  }
-});
+// // REST API STARTS HERE
+// const auth = basicAuth({
+//   users: {
+//     admin: "123",
+//     user: "456"
+//   }
+// });
 
-var towers = require("./uploads/towers.json");
-console.log(towers);
-const PORT = process.env.PORT || 5000;
+// var towers = require("./uploads/towers.json");
+// console.log(towers);
+// const PORT = process.env.PORT || 5000;
 
-app.use(cookieParser("82e4e438a0705fabf61f9854e3b575af"));
-app.use(bodyParser.json()); //FOR EXCEL UPLOAD
+// app.use(cookieParser("82e4e438a0705fabf61f9854e3b575af"));
+// app.use(bodyParser.json()); //FOR EXCEL UPLOAD
 
-app
-  .use(express.static(path.join(__dirname, "/client/build")))
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+// app
+//   .use(express.static(path.join(__dirname, "/client/build")))
+//   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "/client/build/index.html"));
-});
+// app.get("/", (req, res) => {
+//   res.sendFile(path.join(__dirname, "/client/build/index.html"));
+// });
 
-app.get("/authenticate", auth, (req, res) => {
-  const options = {
-    httpOnly: true,
-    signed: true
-  };
+// app.get("/authenticate", auth, (req, res) => {
+//   const options = {
+//     httpOnly: true,
+//     signed: true
+//   };
 
-  console.log(req.auth.user);
+//   console.log(req.auth.user);
 
-  if (req.auth.user === "admin") {
-    res.cookie("name", "admin", options).send({ screen: "admin" });
-  } else if (req.auth.user === "user") {
-    res.cookie("name", "user", options).send({ screen: "user" });
-  }
-});
+//   if (req.auth.user === "admin") {
+//     res.cookie("name", "admin", options).send({ screen: "admin" });
+//   } else if (req.auth.user === "user") {
+//     res.cookie("name", "user", options).send({ screen: "user" });
+//   }
+// });
 
-app.get("/read-cookie", (req, res) => {
-  console.log(req.signedCookies);
-  if (req.signedCookies.name === "admin") {
-    res.send({ screen: "admin" });
-  } else if (req.signedCookies.name === "user") {
-    res.send({ screen: "user" });
-  } else {
-    res.send({ screen: "auth" });
-  }
-});
+// app.get("/read-cookie", (req, res) => {
+//   console.log(req.signedCookies);
+//   if (req.signedCookies.name === "admin") {
+//     res.send({ screen: "admin" });
+//   } else if (req.signedCookies.name === "user") {
+//     res.send({ screen: "user" });
+//   } else {
+//     res.send({ screen: "auth" });
+//   }
+// });
 
-app.get("/clear-cookie", (req, res) => {
-  res.clearCookie("name").end();
-});
+// app.get("/clear-cookie", (req, res) => {
+//   res.clearCookie("name").end();
+// });
 
-app.get("/get-data", (req, res) => {
-  if (req.signedCookies.name === "admin") {
-    // res.send("This is admin panel");
-    res.send(
-      // `This is admin panel.  First city in towers list is: ${towers[0].city}`
-      towers
-    );
-  } else if (req.signedCookies.name === "user") {
-    res.send([]); //user doesn't see any data
-  } else {
-    res.end();
-  }
-});
+// app.get("/get-data", (req, res) => {
+//   if (req.signedCookies.name === "admin") {
+//     // res.send("This is admin panel");
+//     res.send(
+//       // `This is admin panel.  First city in towers list is: ${towers[0].city}`
+//       towers
+//     );
+//   } else if (req.signedCookies.name === "user") {
+//     res.send([]); //user doesn't see any data
+//   } else {
+//     res.end();
+//   }
+// });
 
-//EXCEL UPLOAD SECTION STARTS HERE
+// //EXCEL UPLOAD SECTION STARTS HERE
 
-var storage = multer.diskStorage({
-  //multers disk storage settings
-  destination: function(req, file, cb) {
-    cb(null, "./uploads/");
-  },
-  filename: function(req, file, cb) {
-    var datetimestamp = Date.now();
-    cb(
-      null,
-      file.fieldname +
-        "-" +
-        datetimestamp +
-        "." +
-        file.originalname.split(".")[file.originalname.split(".").length - 1]
-    );
-  }
-});
+// var storage = multer.diskStorage({
+//   //multers disk storage settings
+//   destination: function(req, file, cb) {
+//     cb(null, "./uploads/");
+//   },
+//   filename: function(req, file, cb) {
+//     var datetimestamp = Date.now();
+//     cb(
+//       null,
+//       file.fieldname +
+//         "-" +
+//         datetimestamp +
+//         "." +
+//         file.originalname.split(".")[file.originalname.split(".").length - 1]
+//     );
+//   }
+// });
 
-var upload = multer({
-  //multer settings
-  storage: storage,
-  fileFilter: function(req, file, callback) {
-    //file filter
-    if (
-      ["xls", "xlsx"].indexOf(
-        file.originalname.split(".")[file.originalname.split(".").length - 1]
-      ) === -1
-    ) {
-      return callback(new Error("Wrong extension type"));
-    }
-    callback(null, true);
-  }
-}).single("file");
+// var upload = multer({
+//   //multer settings
+//   storage: storage,
+//   fileFilter: function(req, file, callback) {
+//     //file filter
+//     if (
+//       ["xls", "xlsx"].indexOf(
+//         file.originalname.split(".")[file.originalname.split(".").length - 1]
+//       ) === -1
+//     ) {
+//       return callback(new Error("Wrong extension type"));
+//     }
+//     callback(null, true);
+//   }
+// }).single("file");
 
-/** API path that will upload the files */
-app.post("/upload", function(req, res) {
-  var exceltojson;
-  upload(req, res, function(err) {
-    if (err) {
-      res.json({ error_code: 1, err_desc: err });
-      return;
-    }
-    /** Multer gives us file info in req.file object */
-    if (!req.file) {
-      res.json({ error_code: 1, err_desc: "No file passed" });
-      return;
-    }
-    /** Check the extension of the incoming file and
-     *  use the appropriate module
-     */
-    if (
-      req.file.originalname.split(".")[
-        req.file.originalname.split(".").length - 1
-      ] === "xlsx"
-    ) {
-      exceltojson = xlsxtojson;
-    } else {
-      exceltojson = xlstojson;
-    }
-    console.log(req.file.path);
-    try {
-      exceltojson(
-        {
-          input: req.file.path,
-          output: null, //since we don't need output.json
-          lowerCaseHeaders: true
-        },
-        function(err, result) {
-          if (err) {
-            return res.json({ error_code: 1, err_desc: err, data: null });
-          }
-          res.json({ error_code: 0, err_desc: null, data: result });
-          var jsonContent = JSON.stringify(result);
-          console.log("jsonContent: ", jsonContent);
-          fs.writeFile("./uploads/towers.json", jsonContent, "utf8", function(
-            err
-          ) {
-            if (err) {
-              console.log(
-                "An error occured while writing JSON Object to File."
-              );
-              return console.log(err);
-            }
+// /** API path that will upload the files */
+// app.post("/upload", function(req, res) {
+//   var exceltojson;
+//   upload(req, res, function(err) {
+//     if (err) {
+//       res.json({ error_code: 1, err_desc: err });
+//       return;
+//     }
+//     /** Multer gives us file info in req.file object */
+//     if (!req.file) {
+//       res.json({ error_code: 1, err_desc: "No file passed" });
+//       return;
+//     }
+//     /** Check the extension of the incoming file and
+//      *  use the appropriate module
+//      */
+//     if (
+//       req.file.originalname.split(".")[
+//         req.file.originalname.split(".").length - 1
+//       ] === "xlsx"
+//     ) {
+//       exceltojson = xlsxtojson;
+//     } else {
+//       exceltojson = xlstojson;
+//     }
+//     console.log(req.file.path);
+//     try {
+//       exceltojson(
+//         {
+//           input: req.file.path,
+//           output: null, //since we don't need output.json
+//           lowerCaseHeaders: true
+//         },
+//         function(err, result) {
+//           if (err) {
+//             return res.json({ error_code: 1, err_desc: err, data: null });
+//           }
+//           res.json({ error_code: 0, err_desc: null, data: result });
+//           var jsonContent = JSON.stringify(result);
+//           console.log("jsonContent: ", jsonContent);
+//           fs.writeFile("./uploads/towers.json", jsonContent, "utf8", function(
+//             err
+//           ) {
+//             if (err) {
+//               console.log(
+//                 "An error occured while writing JSON Object to File."
+//               );
+//               return console.log(err);
+//             }
 
-            console.log("JSON file has been saved.");
-          });
-        }
-      );
-      try {
-        fs.unlinkSync(req.file.path);
-      } catch (e) {
-        //error deleting the file
-      }
-    } catch (e) {
-      res.json({ error_code: 1, err_desc: "Corrupted excel file" });
-    }
-  });
-});
+//             console.log("JSON file has been saved.");
+//           });
+//         }
+//       );
+//       try {
+//         fs.unlinkSync(req.file.path);
+//       } catch (e) {
+//         //error deleting the file
+//       }
+//     } catch (e) {
+//       res.json({ error_code: 1, err_desc: "Corrupted excel file" });
+//     }
+//   });
+// });
 
-//EXCEL UPLOAD SECTION ENDS HERE
+// //EXCEL UPLOAD SECTION ENDS HERE
