@@ -36,6 +36,7 @@ function View(props) {
       <p>{screen}</p>
       <TowerList1 />
       <button onClick={deleteCookie}>Logout</button>
+      <Upload />
     </div>
   );
 }
@@ -96,7 +97,7 @@ function App() {
       ) : (
         <div>
           <View screen={screen} setScreen={setScreen} />
-          <Upload />
+          <NearestTower />
         </div>
       )}
     </div>
