@@ -11,7 +11,6 @@ import { subscribeToGPS } from "./api";
 import * as geolib from "geolib";
 
 function App() {
-  <NearestTower />;
   // // const [timestamp, setTimestamp] = useState("no timestamp yet");
   // // const [coordinates, setCoordinates] = useState("no coord yet");
   // const [latitude, setLatitude] = useState("no coord yet");
@@ -36,26 +35,13 @@ function App() {
   //   </li>
   // ));
   // const nearest = coords => geolib.findNearest(coords, stations);
-  // return (
-  //   <div className="App">
-  //     <header className="App-header">
-  //       <img src={logo} className="App-logo" alt="logo" />
-  //       <p>Station coordinates.</p>
-  //       <a
-  //         className="App-link"
-  //         href="https://reactjs.org"
-  //         target="_blank"
-  //         rel="noopener noreferrer"
-  //       >
-  //         {listStations}{" "}
-  //       </a>
-  //       <a>-</a>
-  //       <a className="App-intro">Latitude: {Number(latitude).toFixed(6)}</a>
-  //       <a className="App-intro">Longitude: {Number(longitude).toFixed(6)}</a>
-  //       <a>nearest: {nearest} </a>
-  //     </header>
-  //   </div>
-  // );
+  return (
+    <div className="App">
+      <header className="App-header">
+        <NearestTower />;
+      </header>
+    </div>
+  );
 }
 
 export default App;

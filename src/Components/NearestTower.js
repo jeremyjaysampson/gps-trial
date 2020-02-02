@@ -45,8 +45,6 @@ const NearestTower = () => {
 
   const nearest = coords => geolib.findNearest(coords, stations);
   return (
-    <div className="App">
-      <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Station coordinates.</p>
         <a
@@ -61,8 +59,6 @@ const NearestTower = () => {
         <a className="App-intro">Latitude: {Number(latitude).toFixed(6)}</a>
         <a className="App-intro">Longitude: {Number(longitude).toFixed(6)}</a>
         <a>nearest: {nearest} </a>
-      </header>
-    </div>
   );
 };
 
