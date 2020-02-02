@@ -30,7 +30,7 @@ const nowReadGPS = () =>
       i2cBus.i2cReadSync(GPS_ADDR, 1024, rxbuf);
       let str = rxbuf.toString();
       let start = str.indexOf("$GNGGA");
-      let GNGGA = str.slice(start, start + 100);
+      let GNGGA = str.slice(start, start + 75);
       console.log(GNGGA);
       let data = GPS.Parse(GNGGA);
       console.log(
