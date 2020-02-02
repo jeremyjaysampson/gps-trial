@@ -3,6 +3,10 @@ import { subscribeToGPS } from "./../api";
 // import { decimalToSexagesimal } from "geolib";
 import * as geolib from "geolib";
 import logo from "./../logo.svg";
+// import Coordinates from "./Components/Coordinates";
+// import Dashboard from "./Components/dashboard";
+// import { subscribeToTimer } from "./api";
+// import { decimalToSexagesimal } from "geolib";
 
 const NearestTower = () => {
   // const [timestamp, setTimestamp] = useState("no timestamp yet");
