@@ -19,5 +19,5 @@ try {
   let sample = gps.update(GNGGA);
   console.log(sample);
 } catch (error) {
-  console.log(error);
+  console.error(error.message);
 }
