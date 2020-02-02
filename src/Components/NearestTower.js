@@ -45,20 +45,22 @@ const NearestTower = () => {
 
   const nearest = coords => geolib.findNearest(coords, stations);
   return (
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Station coordinates.</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {listStations}{" "}
-        </a>
-        <a>-</a>
-        <a className="App-intro">Latitude: {Number(latitude).toFixed(6)}</a>
-        <a className="App-intro">Longitude: {Number(longitude).toFixed(6)}</a>
-        <a>nearest: {nearest} </a>
+    <div>
+      <img src={logo} className="App-logo" alt="logo" />
+      <p>Station coordinates.</p>
+      <a
+        className="App-link"
+        href="https://reactjs.org"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {listStations}{" "}
+      </a>
+      <a>-</a>
+      <a className="App-intro">Latitude: {Number(latitude).toFixed(6)}</a>
+      <a className="App-intro">Longitude: {Number(longitude).toFixed(6)}</a>
+      <a>nearest: {nearest} </a>
+    </div>
   );
 };
 
