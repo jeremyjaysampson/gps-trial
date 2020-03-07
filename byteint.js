@@ -1,17 +1,24 @@
 const SerialPort = require("serialport");
 
 const preamble = [
-  "0xFE",
-  "0xFE",
-  "0x00",
-  "0xE0",
-  "0x05",
-  "0x00",
-  "0x00",
-  "0x65",
-  "0x61",
-  "0x04",
-  "0xFD"
+  "0x02",
+  "0x2a",
+  "0x47",
+  "0x45",
+  "0x54",
+  "0x2c",
+  "0x45",
+  "0x58",
+  "0x43",
+  "0x4d",
+  "0x44",
+  "0x2c",
+  "0x52",
+  "0x58",
+  "0x46",
+  "0x52",
+  "0x51",
+  "0x03"
 ];
 
 var i;
@@ -20,7 +27,7 @@ for (i = 0; i < preamble.length; i++) {
   buffer[i] = preamble[i];
 }
 
-const path = "COM2";
+const path = "COM14";
 const serialport = new SerialPort(path);
 
 serialport.write(buffer);
