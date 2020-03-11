@@ -46,8 +46,8 @@ listen = () => {
   );
 };
 
-const port = "COM13"; //on computer
-//const port = "/dev/ttyS0";  //on Raspberry Pi
+//const port = "COM13"; //on computer
+const port = "/dev/ttyS0";  //on Raspberry Pi
 const serialport = new SerialPort(port, { baudRate: 9600 });
 
 //listen();
